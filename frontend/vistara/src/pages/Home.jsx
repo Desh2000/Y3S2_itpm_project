@@ -1,5 +1,5 @@
-export default function Home(){
-    <>
-        return <h1>home</h1>
-    </>
+function Home(){
+    return <h1 style={{color: 'red'}}>home</h1>
 }
+
+export default Home
