@@ -20,7 +20,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth")
-    public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest req){
+    public ResponseEntity<AuthResponse> auth(@RequestBody AuthRequest req){
         return ResponseEntity.ok(authService.auth(req));
     }
 }

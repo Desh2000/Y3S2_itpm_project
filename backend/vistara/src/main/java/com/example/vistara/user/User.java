@@ -25,11 +25,9 @@ public class User implements UserDetails, Principal {
     @Column(unique = true)
     private String email;
     private String password;
-    private boolean accountLocked;
-    private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
 
     @Override
     public String getName() {
@@ -38,10 +36,7 @@ public class User implements UserDetails, Principal {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles
-                .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getRole()))
-                .collect(Collectors.toList());
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
@@ -60,17 +55,9 @@ public class User implements UserDetails, Principal {
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return !accountLocked; // Return true if the account is not locked
-    }
-
-    @Override
     public boolean isCredentialsNonExpired() {
         return true; // Return true if the credentials are not expired
     }
 
-    @Override
-    public boolean isEnabled() {
-        return enabled; // Return true if the user is enabled
-    }
+
 }

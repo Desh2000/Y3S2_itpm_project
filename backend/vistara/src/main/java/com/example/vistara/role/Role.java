@@ -1,25 +1,7 @@
 package com.example.vistara.role;
 
-import com.example.vistara.user.User;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public enum Role {
+    USER,
 
-import java.util.List;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String role;
-
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users;
-
+    ADMIN
 }

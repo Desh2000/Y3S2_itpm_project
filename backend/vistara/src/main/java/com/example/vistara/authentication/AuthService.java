@@ -1,6 +1,7 @@
 package com.example.vistara.authentication;
 
 import com.example.vistara.config.JWTService;
+import com.example.vistara.role.Role;
 import com.example.vistara.user.User;
 import com.example.vistara.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class AuthService {
                 .name(req.getName())
                 .email(req.getEmail())
                 .password(passwordEncoder.encode(req.getPassword()))
+                .role(Role.USER)
                 .build();
 
         userRepository.save(newUser);
