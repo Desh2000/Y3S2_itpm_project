@@ -1,7 +1,8 @@
 .container {
     padding: 1rem;
-    max-width: 32rem;
+    max-width: 30rem;
     margin: 100px auto;
+    font-family: Arial, sans-serif;
   }
   
   .heading {
@@ -35,7 +36,7 @@
   }
   
   .button:hover {
-    opacity: 0.95;
+    opacity: 0.5;
   }
   
   .button:disabled {
@@ -58,4 +59,13 @@
   .error {
     color: #ef4444;
     margin-top: 1.25rem;
+  }
+
+  form{
+    background-color: white;
+  }
+
+  label{
+    font-size: 14px;
+    color: gray;
   }
