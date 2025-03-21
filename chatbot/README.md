@@ -5,4 +5,5 @@
   - Purpose: Draft CMS entries
   - Parameters: content-type (@content-type), content (@sys.any)
   - Response: Static prompt for title
-- Status: CMS intent setup complete
+  - Test: "Draft an announcement about a meeting" → "I’ve started your announcement draft with content: a meeting. What’s the title?"
+- Status: CMS intent setup complete, tested
