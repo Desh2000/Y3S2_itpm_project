@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/login.css";
+import styles from "../styles/login.module.css";
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -42,24 +42,24 @@ function Login() {
   };
 
   return (
-    <div className="container">
-      <h1 className="heading">Sign In</h1>
-      <form onSubmit={handleSubmit} className="form">
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Sign In</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="email"
           placeholder="Email"
           id="email"
-          className="input"
+          className={styles.input}
           onChange={handleChange}
         />
         <input
           type="password"
           placeholder="Password"
           id="password"
-          className="input"
+          className={styles.input}
           onChange={handleChange}
         />
-        <button disabled={loading} className="button">
+        <button disabled={loading} className={styles.button}>
           {loading ? "Loading..." : "Sign In"}
         </button>
       </form>
@@ -69,7 +69,7 @@ function Login() {
           Sign Up
         </Link>
       </div> */}
-      {error && <p className="error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 }

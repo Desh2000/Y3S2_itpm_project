@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/login.css";
+import styles from "../styles/login.module.css";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -89,25 +89,25 @@ function Register() {
   }
 
   return (
-    <div className="container">
-      <h1 className="heading">Create Account</h1>
-      <form onSubmit={handleSubmit} className="form">
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Create Account</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label>Full Name</label>
         <input
           type="text"
           placeholder="Full Name"
           id="fullname"
-          className="input"
+          className={styles.input}
           value={formData.fullname}
           onChange={handleChange}
         />
-        {error.fullname && <p className="error">{error.fullname}</p>}
+        {error.fullname && <p className={styles.error}>{error.fullname}</p>}
         <label>Email</label>
         <input
           type="email"
           placeholder="Email"
           id="email"
-          className="input"
+          className={styles.input}
           value={formData.email}
           onChange={handleChange}
         />
@@ -116,7 +116,7 @@ function Register() {
           type="tel"
           placeholder="Phone"
           id="phone"
-          className="input"
+          className={styles.input}
           value={formData.phone}
           onChange={handleChange}
         />
@@ -125,7 +125,7 @@ function Register() {
           type="password"
           placeholder="Password"
           id="password"
-          className="input"
+          className={styles.input}
           value={formData.password}
           onChange={handleChange}
         />
@@ -134,11 +134,11 @@ function Register() {
           type="password"
           placeholder="Confirm Password"
           id="confirmPassword"
-          className="input"
+          className={styles.input}
           value={formData.confirmPassword}
           onChange={handleChange}
         />
-        <button disabled={loading} className="button">
+        <button disabled={loading} className={styles.button}>
           {loading ? "Loading..." : "Register"}
         </button>
       </form>
