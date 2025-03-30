@@ -1,8 +1,26 @@
+
 .container {
+    padding: 1rem;
+    max-width: 30rem;
+    margin: 200px auto;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  }
+
+  .containerReg {
     padding: 1rem;
     max-width: 30rem;
     margin: 100px auto;
     font-family: Arial, sans-serif;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
   }
   
   .heading {
@@ -10,6 +28,7 @@
     text-align: center;
     font-weight: 600;
     margin: 1.75rem 0;
+    color: rgb(88, 88, 214);
   }
   
   .form {
@@ -44,13 +63,15 @@
     cursor: not-allowed;
   }
   
-  .link-container {
+  .linkContainer {
     display: flex;
     gap: 0.5rem;
     margin-top: 1.25rem;
+    padding: 2px;
+    color: black;
   }
   
-  .signup-link {
+  .signupLink {
     color: #1d4ed8;
     text-decoration: none;
     font-weight: 500;
@@ -58,11 +79,7 @@
   
   .error {
     color: #ef4444;
-    margin-top: 1.25rem;
-  }
-
-  form{
-    background-color: white;
+    margin: 0;
   }
 
   label{

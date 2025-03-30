@@ -5,7 +5,9 @@ import './App.css'
 import Signin from './pages/login'
 import Register from './pages/register'
 import Dashboard from './pages/dashboard'
+import Users from './pages/users'
 import Profile from './pages/profile'
+import Userdashboard from './pages/user-dashboard'
 
 
 function App() {
@@ -16,8 +18,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/dashboard' element={<Userdashboard/>}/>
         </Routes>
       </BrowserRouter>
     </>

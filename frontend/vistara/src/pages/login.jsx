@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../styles/login.module.css";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -19,23 +20,38 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!formData.email || !formData.password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     setLoading(true);
-    setError(""); // Reset error before submitting
 
     try {
 
       const response = await axios.post("http://localhost:8080/api/auth/login", formData);
       console.log(response.status)
 
-      if (response.status === 403) {
-        setError("invalid credentials");
-        return;
-      }
-      
-      navigate("/");
+      toast.success("Login successful!", {
+        position: "top-right",
+        autoClose: 2000,
+        onClose: () => navigate("/dashboard", { replace: true })
+      });
 
     } catch (error) {
-      setError(error);
+      if (error.response) {
+        switch (error.response.status) {
+          case 403:
+            toast.error("Invalid email or password");
+            break;
+
+          default:
+            toast.error("An error occurred. Please try again");
+        }
+      } else {
+        toast.error("Network error. Please check your connection");
+      }
     } finally {
       setLoading(false);
     }
@@ -43,6 +59,17 @@ function Login() {
 
   return (
     <div className={styles.container}>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <h1 className={styles.heading}>Sign In</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
@@ -63,13 +90,13 @@ function Login() {
           {loading ? "Loading..." : "Sign In"}
         </button>
       </form>
-      {/* <div className="link-container">
-        <p>Don’t have an account?</p>
-        <Link to="/signup" className="signup-link">
+      <div className={styles.linkContainer}>
+         Don’t have an account?{" "}	
+        <Link to="/register" className={styles.signupLink}>
           Sign Up
         </Link>
-      </div> */}
-      {error && <p className={styles.error}>{error}</p>}
+      </div>
+      {/* {error && <p className={styles.error}>{error}</p>} */}
     </div>
   );
 }

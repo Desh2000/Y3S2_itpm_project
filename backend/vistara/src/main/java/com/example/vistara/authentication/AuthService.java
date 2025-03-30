@@ -24,6 +24,7 @@ public class AuthService {
                 .name(req.getName())
                 .email(req.getEmail())
                 .password(passwordEncoder.encode(req.getPassword()))
+                .phone(req.getPhone())
                 .role(Role.USER)
                 .build();
 

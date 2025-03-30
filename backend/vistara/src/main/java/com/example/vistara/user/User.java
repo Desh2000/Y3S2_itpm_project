@@ -25,6 +25,7 @@ public class User implements UserDetails, Principal {
     @Column(unique = true)
     private String email;
     private String password;
+    private Integer phone;
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
@@ -59,5 +60,8 @@ public class User implements UserDetails, Principal {
         return true; // Return true if the credentials are not expired
     }
 
+    public String getDisplayUsername() {
+        return name;
+    }
 
 }

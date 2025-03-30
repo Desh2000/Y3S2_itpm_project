@@ -3,7 +3,7 @@ import '../styles/dashboard.css';
 import  {BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill} from 'react-icons/bs'
 import { NavLink } from 'react-router-dom';
 
-function sidebar() {
+function SidebarUser() {
   return (
     <aside id="sidebar">
         <div className='sidebar-title'>
@@ -20,8 +20,8 @@ function sidebar() {
                 </a>
             </li>
             <li className='sidebar-list-item'>
-                <NavLink to="/users">
-                    <BsPeopleFill className='icon'/> Users
+                <NavLink to="/profile">
+                    <BsPeopleFill className='icon'/> Pofile
                 </NavLink>
             </li>
             <li className='sidebar-list-item'>
@@ -39,4 +39,4 @@ function sidebar() {
   )
 }
 
-export default sidebar
+export default SidebarUser

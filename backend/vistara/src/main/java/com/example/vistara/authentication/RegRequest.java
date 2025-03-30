@@ -13,5 +13,6 @@ public class RegRequest {
     private String name;
     private String email;
     private String password;
+    private Integer phone;
 
 }

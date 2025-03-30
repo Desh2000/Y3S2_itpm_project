@@ -3,51 +3,40 @@ import  { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 
-function Dashboardhome() {
+function UserDashboardhome() {
 
     const data = [
         {
-          name: 'Page A',
+          name: 'day 1',
           uv: 4000,
-          pv: 2400,
+          count: 2400,
           amt: 2400,
         },
         {
-          name: 'Page B',
+          name: 'day 2',
           uv: 3000,
-          pv: 1398,
+          count: 1398,
           amt: 2210,
         },
         {
-          name: 'Page C',
+          name: 'day 3',
           uv: 2000,
-          pv: 9800,
+          count: 9800,
           amt: 2290,
         },
         {
-          name: 'Page D',
+          name: 'day 4',
           uv: 2780,
-          pv: 3908,
+          count: 3908,
           amt: 2000,
         },
         {
-          name: 'Page E',
+          name: 'day 5',
           uv: 1890,
-          pv: 4800,
+          count: 4800,
           amt: 2181,
         },
-        {
-          name: 'Page F',
-          uv: 2390,
-          pv: 3800,
-          amt: 2500,
-        },
-        {
-          name: 'Page G',
-          uv: 3490,
-          pv: 4300,
-          amt: 2100,
-        },
+        
       ];
      
 
@@ -63,7 +52,7 @@ function Dashboardhome() {
                     <h3>Events</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
-                <h1>30</h1>
+                <h1>3</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>
@@ -77,7 +66,7 @@ function Dashboardhome() {
                     <h3>Stories</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
-                <h1>33</h1>
+                <h1>3</h1>
             </div>
             
         </div>
@@ -85,7 +74,7 @@ function Dashboardhome() {
         <div className='charts'>
             <ResponsiveContainer width="100%" height="100%">
             <BarChart
-            width={500}
+            width={100}
             height={300}
             data={data}
             margin={{
@@ -100,8 +89,7 @@ function Dashboardhome() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                <Bar dataKey="count" fill="#8884d8" />
                 </BarChart>
             </ResponsiveContainer>
 
@@ -122,8 +110,7 @@ function Dashboardhome() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="count" stroke="#8884d8" activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer>
 
@@ -132,4 +119,4 @@ function Dashboardhome() {
   )
 }
 
-export default Dashboardhome
+export default UserDashboardhome
