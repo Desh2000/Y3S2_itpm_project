@@ -37,7 +37,6 @@ function Register() {
     
     // Only proceed if there are no validation errors
     if (Object.keys(formErrors).length > 0) {
-      console.log("1")
       return;
     }
 
