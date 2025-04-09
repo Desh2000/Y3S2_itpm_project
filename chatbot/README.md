@@ -17,3 +17,16 @@ Dialogflow Agent: VistaraChatbot
   - CreateEvent: Creates events with title, date, time, location, description for CMS fields.
   - CreateCaption: Creates captions with content, optional event-name/tags.
 - Status: Updated CreateEvent, added CreateCaption for CMS integration
+
+# Intelligent Assistance System
+- Dialogflow Agent: VistaraChatbot
+- Entities:
+  - @content-type (announcement, event, notice, reminder, etc.)
+  - @title (Music Fest 2025, Team Meeting, Holiday Notice, etc.)
+  - @category, @department, @reason, @tags
+- Intents:
+  - CreateAnnouncement: Creates announcements with title, content, optional date.
+  - CreateEvent: Creates events with title, date, time, location, description.
+  - CreateNotice: Creates notices with title, date, reason, optional content.
+  - CreateReminder: Creates reminders with title, date, content, optional time/location.
+- Status: Updated CreateNotice and CreateAnnouncement, added CreateReminder for CMS integration
