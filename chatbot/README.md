@@ -30,3 +30,9 @@ Dialogflow Agent: VistaraChatbot
   - CreateNotice: Creates notices with title, date, reason, optional content.
   - CreateReminder: Creates reminders with title, date, content, optional time/location.
 - Status: Updated CreateNotice and CreateAnnouncement, added CreateReminder for CMS integration
+
+# Intelligent Assistance System
+
+- Integrations:
+  - Google Assistant: Enabled for voice support (Draft mode, free tier).
+- Status: Updated responses for new CMS Title field, enabled Google Assistant voice support
