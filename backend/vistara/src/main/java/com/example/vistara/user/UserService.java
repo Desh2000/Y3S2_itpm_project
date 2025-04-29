@@ -32,16 +32,16 @@ public class UserService {
     }
 
     public User updateUser(Long id, User userUpdates) {
-        Optional<User> optionalUser = userRepository.findById(id);
+        Optional<User> user = userRepository.findById(id);
 
-        if (optionalUser.isEmpty()) {
+        if (user.isEmpty()) {
             throw new RuntimeException("User not found with id: " + id);
         }
 
-        User existingUser = optionalUser.get();
+        User existingUser = user.get();
 
         // Update only non-null fields from the incoming user object
-        if (userUpdates.getName() != null) {
+        if (userUpdates.getDisplayUsername() != null) {
             existingUser.setName(userUpdates.getDisplayUsername());
         }
         if (userUpdates.getEmail() != null) {
@@ -51,7 +51,7 @@ public class UserService {
             existingUser.setPhone(userUpdates.getPhone());
         }
         if (userUpdates.getPassword() != null) {
-            existingUser.setPassword(userUpdates.getPassword()); // Should encrypt in production
+            existingUser.setPassword(userUpdates.getPassword());
         }
 
         return userRepository.save(existingUser);

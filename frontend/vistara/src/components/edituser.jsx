@@ -2,39 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../styles/login.module.css";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Added missing CSS import
+import "react-toastify/dist/ReactToastify.css"; 
 
-function EditUser({ userId }) {
+function EditUser( ) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
   });
+  
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   // Fetch user data when component mounts
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/auth/user/7`);
-        console.log(response.data);
-        const { displayUsername = "", email = "", phone = "" } = response.data; // Default to empty string
-        setFormData({ displayUsername, email, phone, password: "" });
-      } catch (err) {
-        toast.error("Failed to load user data");
-      }
-    };
-    fetchUser();
-  }, [userId]);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value || "", // Ensure value is a string
+      [e.target.id]: e.target.value,
     });
-    setErrors((prev) => ({ ...prev, [e.target.id]: "" }));
+
+    console.log(formData)
   };
 
   const validate = (data) => {
@@ -96,7 +85,7 @@ function EditUser({ userId }) {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8080/api/auth/update/7`,
+        `http://localhost:8080/api/auth/update/29`,
         updates
       );
       toast.success("User updated successfully!");
