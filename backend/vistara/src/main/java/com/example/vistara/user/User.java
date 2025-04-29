@@ -25,7 +25,7 @@ public class User implements UserDetails, Principal {
     @Column(unique = true)
     private String email;
     private String password;
-    private Integer phone;
+    private String phone;
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
