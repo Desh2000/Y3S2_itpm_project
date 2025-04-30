@@ -35,4 +35,4 @@ Dialogflow Agent: VistaraChatbot
 
 - Integrations:
   - Google Assistant: Enabled for voice support (Draft mode, free tier).
-- Status: Updated responses for new CMS Title field, enabled Google Assistant voice support
+- Status: Updated responses for new CMS Title field, enabled Google Assistant voice support.
