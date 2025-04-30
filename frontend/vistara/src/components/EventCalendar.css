@@ -1,0 +1,67 @@
+/* EventCalendar.css */
+
+/* General calendar styling */
+.react-calendar {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for all calendar tiles */
+.react-calendar__tile {
+    position: relative;
+    height: 100%;
+    padding: 10px 6px 6px;
+    text-align: center;
+    background: none !important; /* Remove default background */
+    color: black !important; /* Ensure text color is consistent */
+    border: none !important; /* Remove any default borders */
+}
+
+/* Style for the selected date tile */
+.react-calendar__tile--active {
+    background: none !important; /* Remove selected date background (e.g., yellow) */
+    color: black !important;
+}
+
+/* Style for the current date tile */
+.react-calendar__tile--now {
+    background: none !important; /* Remove current date background (e.g., blue) */
+    color: black !important;
+}
+
+/* Optional hover effect for tiles */
+.react-calendar__tile:hover {
+    background: #f0f0f0 !important; /* Subtle gray background on hover */
+}
+
+/* Ensure the custom dot is positioned correctly within the tile */
+.react-calendar__tile abbr {
+    position: relative;
+    z-index: 1;
+}
+
+/* Style for the custom dot content */
+.react-calendar__tile-content {
+    position: absolute;
+    bottom: 2px; /* Move dot to the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 2px;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 2;
+    font-size: 12px; /* Adjust size if needed */
+}
+
+/* Style for tiles with events (apply red dot) */
+.react-calendar__tile--hasEvent .react-calendar__tile-content {
+    color: red !important; /* Red dot for event dates */
+}
+
+/* Ensure the dot is visible over other elements */
+.react-calendar__tile--hasEvent {
+    position: relative;
+}
