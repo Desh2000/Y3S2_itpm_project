@@ -2,7 +2,8 @@ package com.example.vistara.service;
 
 
 
-
+import com.example.vistara.model.Event;
+import com.example.vistara.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +13,18 @@ import java.util.List;
 public class EventService {
 
     @Autowired
-    private com.example.vistara.repository.EventRepository eventRepository;
+    private EventRepository eventRepository;
 
-    public com.example.vistara.model.Event createEvent(com.example.vistara.model.Event event) {
+    public Event createEvent(Event event) {
         return eventRepository.save(event);
     }
 
-    public List<com.example.vistara.model.Event> getAllEvents() {
+    public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
 
-    public com.example.vistara.model.Event updateEvent(Long id, com.example.vistara.model.Event event) {
-        com.example.vistara.model.Event existingEvent = eventRepository.findById(id)
+    public Event updateEvent(Long id, Event event) {
+        Event existingEvent = eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
         existingEvent.setEventName(event.getEventName());
         existingEvent.setStartDate(event.getStartDate());
@@ -42,9 +43,7 @@ public class EventService {
         eventRepository.deleteById(id);
     }
 
-    public List<com.example.vistara.model.Event> getEventsByCategory(String category) {
-        return eventRepository.findByEventType
-        
-        (category);
+    public List<Event> getEventsByCategory(String category) {
+        return eventRepository.findByEventType(category);
     }
 }
