@@ -44,6 +44,7 @@ public class EventService {
 
     public List<com.example.vistara.model.Event> getEventsByCategory(String category) {
         return eventRepository.findByEventType
+        
         (category);
     }
 }

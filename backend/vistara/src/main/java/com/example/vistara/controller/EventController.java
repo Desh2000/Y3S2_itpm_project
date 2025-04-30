@@ -13,7 +13,7 @@ import java.util.List;
 public class EventController {
 
     @Autowired
-    private eventService eventService;
+    private EventService eventService;
 
     @PostMapping
     public Event createEvent(@RequestBody Event event) {
