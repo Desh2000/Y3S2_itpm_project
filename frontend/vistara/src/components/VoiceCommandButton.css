@@ -1,0 +1,309 @@
+.voice-command-container {
+  display: inline-flex;
+  position: relative;
+}
+
+/* Creative circular microphone design */
+.voice-command-btn.mic-circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.mic-icon-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-icon-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 0;
+}
+
+.voice-command-btn.mic-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.voice-command-btn.mic-circle:active {
+  transform: scale(0.95);
+}
+
+/* Sound wave animation for the microphone icon */
+.sound-wave {
+  position: relative;
+  z-index: 1;
+  animation: pulse-mic 1.5s infinite;
+}
+
+@keyframes pulse-mic {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Enhanced pulse animation for active recording */
+.pulse-animation {
+  animation: pulse-circle 1.5s infinite;
+  box-shadow: 0 0 0 rgba(220, 53, 69, 0.4);
+  position: relative;
+}
+
+.pulse-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid rgba(220, 53, 69, 0.6);
+  animation: ripple 1.5s infinite ease-out;
+  z-index: -1;
+}
+
+@keyframes pulse-circle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Language selector styling */
+.voice-language-toggle {
+  margin-left: 4px;
+  padding: 0 8px !important;
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+  height: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.voice-language-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-item.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Assistant Popup Styles */
+.assistant-popover {
+  width: 250px;
+  max-width: 100%;
+  z-index: 1060;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fade-slide-up 0.3s ease-out;
+  border: none;
+}
+
+.assistant-popover .popover-header {
+  background-color: #0d6efd;
+  color: white;
+  border-bottom: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.assistant-popover .popover-body {
+  padding: 0.8rem 1rem;
+  background-color: #fff;
+  font-size: 0.9rem;
+}
+
+.animated-icon {
+  animation: pulse-icon 1.5s infinite;
+}
+
+@keyframes pulse-icon {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sound wave animation in the assistant popup */
+.sound-wave-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.sound-wave-bar {
+  background-color: #0d6efd;
+  width: 4px;
+  height: 15px;
+  margin: 0 2px;
+  border-radius: 2px;
+  animation: sound-wave-anim 1.2s ease-in-out infinite;
+}
+
+.sound-wave-bar:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.sound-wave-bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.sound-wave-bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.sound-wave-bar:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.sound-wave-bar:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes sound-wave-anim {
+  0%, 100% {
+    height: 5px;
+  }
+  50% {
+    height: 25px;
+  }
+}
+
+/* Size variations */
+.voice-command-btn.mic-circle.btn-sm {
+  width: 30px;
+  height: 30px;
+  font-size: 0.75rem;
+}
+
+.voice-command-btn.mic-circle.btn-sm + .voice-language-toggle {
+  height: 30px;
+  font-size: 0.75rem;
+}
+
+.voice-command-btn.mic-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  font-size: 1.25rem;
+}
+
+.voice-command-btn.mic-circle.btn-lg + .voice-language-toggle {
+  height: 50px;
+  font-size: 1.25rem;
+}
+
+/* Make it responsive */
+@media (max-width: 576px) {
+  .voice-command-btn.mic-circle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .voice-language-toggle {
+    height: 36px;
+  }
+  
+  .assistant-popover {
+    width: 220px;
+  }
+}
+
+/* Status indicator */
+.voice-status {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+.voice-status.recording {
+  color: #dc3545;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+} 
+
+.voice-status.recording::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #dc3545;
+  margin-right: 8px;
+  animation: status-pulse 1.5s infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+} 

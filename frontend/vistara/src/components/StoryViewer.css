@@ -1,0 +1,212 @@
+.story-viewer-modal-dialog {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.story-viewer-modal-content {
+  background: transparent;
+  border: 0;
+}
+
+.story-viewer-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 800px;
+  max-width: 100%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Progress bar */
+.story-progress-container {
+  display: flex;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.story-progress-item {
+  padding: 0 2px;
+}
+
+.story-progress-bar {
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.progress-bar {
+  background-color: white;
+}
+
+/* Header */
+.story-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.story-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.story-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.story-user-details {
+  color: white;
+}
+
+.story-username {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.story-timestamp {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.story-close-btn {
+  color: white;
+  font-size: 18px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Content */
+.story-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  overflow: hidden;
+}
+
+.story-image, .story-video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.story-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.story-text p {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.story-caption {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  font-size: 14px;
+}
+
+/* Navigation buttons */
+.story-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.story-prev-btn {
+  left: 10px;
+}
+
+.story-next-btn {
+  right: 10px;
+}
+
+/* Footer */
+.story-footer {
+  padding: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  z-index: 10;
+}
+
+.story-action-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.story-action-btn {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+}
+
+.story-action-text {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .story-viewer-modal-dialog {
+    max-width: 100%;
+    margin: 0;
+    height: 100%;
+  }
+  
+  .story-viewer-container {
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .story-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+} 
