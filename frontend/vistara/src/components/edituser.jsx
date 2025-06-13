@@ -84,15 +84,18 @@ function EditUser( ) {
     }
 
     try {
+
+      const userId = localStorage.getItem("userId");
+
       const response = await axios.patch(
-        `http://localhost:8080/api/auth/update/29`,
+        `http://localhost:8081/api/auth/update/${userId}`,
         updates
       );
       toast.success("User updated successfully!");
       setFormData({
-        name: response.data.displayUsername || "",
-        email: response.data.email || "",
-        phone: response.data.phone || "",
+        name: "",
+        email: "",
+        phone: "",
         password: "",
       });
     } catch (err) {
@@ -155,6 +158,7 @@ function EditUser( ) {
           {loading ? "Updating..." : "Update Profile"}
         </button>
       </form>
+      
       <ToastContainer
         position="top-right"
         autoClose={3000}

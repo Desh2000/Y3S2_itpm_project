@@ -30,13 +30,19 @@ function Login() {
 
     try {
 
-      const response = await axios.post("http://localhost:8080/api/auth/login", formData);
-      console.log(response.status)
+      const response = await axios.post("http://localhost:8081/api/auth/login", formData);
+      console.log(response.data)
+
+      const userId = response.data.id; // Make sure 'id' exists in your response
+      localStorage.setItem("userId", userId);
+      console.log(localStorage.getItem("userId"));
 
       toast.success("Login successful!", {
         position: "top-right",
         autoClose: 2000,
-        onClose: () => navigate("/dashboard", { replace: true })
+        onClose: () => {
+          window.location.href = "http://localhost:3000/";
+        }
       });
 
     } catch (error) {

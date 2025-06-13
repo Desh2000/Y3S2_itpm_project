@@ -42,7 +42,7 @@ function Register() {
 
     try {
 
-      const response = await axios.post("http://localhost:8080/api/auth/register", formData);
+      const response = await axios.post("http://localhost:8081/api/auth/register", formData);
       console.log(response)
 
       toast.success("Register successful!", {
