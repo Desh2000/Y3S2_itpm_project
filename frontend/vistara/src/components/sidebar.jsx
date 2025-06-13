@@ -25,13 +25,8 @@ function sidebar() {
                 </NavLink>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
-                    <BsMenuButtonWideFill className='icon'/> Reports
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGearFill className='icon'/> Setting
+                <a href="http://localhost:3000/event-admin-panel" target="_blank" rel="noopener noreferrer">
+                    <BsPeopleFill className='icon' /> Events
                 </a>
             </li>
         </ul>

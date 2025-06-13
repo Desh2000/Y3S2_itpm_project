@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/dashboard.css'; // Import dashboard.css - Ensure this path is correct
+import jsPDF from 'jspdf';
+import { autoTable } from 'jspdf-autotable';  // Explicitly import autoTable
+import '../styles/dashboard.css';
 
 const Table = () => {
     const [data, setData] = useState([]);
@@ -10,7 +12,7 @@ const Table = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/auth/users');
+                const response = await axios.get('http://localhost:8081/api/auth/users');
                 setData(response.data);
                 setLoading(false);
             } catch (err) {
@@ -22,50 +24,80 @@ const Table = () => {
         fetchData();
     }, []);
 
+    const exportToPDF = () => {
+        const doc = new jsPDF();
+
+        doc.setFontSize(18);
+        doc.text('User Report', 14, 22);
+
+        const tableColumn = ['Name', 'Email', 'Phone', 'Role'];
+        const tableRows = data.map(user => [
+            user.displayUsername,
+            user.email,
+            '0' + user.phone,
+            user.role,
+        ]);
+
+        // Explicitly use autoTable from jspdf-autotable
+        autoTable(doc, {
+            startY: 30,
+            head: [tableColumn],
+            body: tableRows,
+            styles: {
+                fontSize: 10,
+                cellPadding: 3,
+            },
+            headStyles: {
+                fillColor: [4, 170, 109],
+            },
+        });
+
+        doc.save('user-report.pdf');
+    };
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
-    // Inline styles for the table - using variables for better organization
-    const tableStyles = {
-        fontFamily: 'Montserrat, sans-serif',
-        borderCollapse: 'collapse',
-        width: '100%',
-    };
-
-    const thStyles = {
-        border: '1px solid #ddd',
-        padding: '12px',
-        textAlign: 'left',
-        backgroundColor: '#04AA6D',
-        color: 'white',
-    };
-
-    const tdStyles = {
-        border: '1px solid #ddd',
-        padding: '8px',
-        color: 'gray'
-    };
-
-    
-
     return (
         <main className='main-container'>
-            <table style={tableStyles}>
+            <button onClick={exportToPDF} 
+             style={{
+                marginBottom: '16px', 
+                padding: '10px 20px', 
+                backgroundColor: '#0d6efd', 
+                color: '#fff', 
+                border: 'none', 
+                borderRadius: '5px', 
+                fontSize: '16px', 
+                fontWeight: '500', 
+                cursor: 'pointer', 
+                transition: 'background-color 0.3s, transform 0.2s ease-in-out'
+              }}
+            
+            >
+                Download Report (PDF)
+            </button>
+
+            <table style={{
+                fontFamily: 'Montserrat, sans-serif',
+                borderCollapse: 'collapse',
+                width: '100%',
+            }}>
                 <thead>
                     <tr>
-                        <th style={thStyles}>Name</th>
-                        <th style={thStyles}>Email</th>
-                        <th style={thStyles}>Phone</th>
-                        <th style={thStyles}>Role</th>
+                        <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left', backgroundColor: '#0d6efd', color: 'white' }}>Name</th>
+                        <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left', backgroundColor: '#0d6efd', color: 'white' }}>Email</th>
+                        <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left', backgroundColor: '#0d6efd', color: 'white' }}>Phone</th>
+                        <th style={{ border: '1px solid #ddd', padding: '12px', textAlign: 'left', backgroundColor: '#0d6efd', color: 'white' }}>Role</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((user) => (
-                        <tr key={user.id} >
-                            <td style={tdStyles}>{user.displayUsername}</td>
-                            <td style={tdStyles}>{user.email}</td>
-                            <td style={tdStyles}>0{user.phone}</td>
-                            <td style={tdStyles}>{user.role}</td>
+                        <tr key={user.id}>
+                            <td style={{ border: '1px solid #ddd', padding: '8px', color: 'gray' }}>{user.displayUsername}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px', color: 'gray' }}>{user.email}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px', color: 'gray' }}>0{user.phone}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px', color: 'gray' }}>{user.role}</td>
                         </tr>
                     ))}
                 </tbody>
